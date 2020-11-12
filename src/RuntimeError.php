@@ -4,6 +4,7 @@
 namespace Frootbox\Exceptions;
 
 
-class RuntimeError extends BaseException {
+class RuntimeError extends BaseException
+{
 
 }
