@@ -34,12 +34,23 @@ abstract class BaseException extends \Exception implements Interfaces\Exception
     /**
      * {@inheritdoc}
      */
-    public function toString(): string
+    public function toString(\Frootbox\Translation\Translator $translator = null): string
     {
         $message = str_replace('\\', '.', substr(get_class($this), 9));
 
         if (!empty($this->message)) {
             $message .= '.' . $this->message;
+        }
+
+        if ($translator) {
+            $translated = $translator->translate($message);
+
+            if ($translated != $message) {
+                $message = $translated;
+            }
+            else {
+                $message = $this->message;
+            }
         }
 
         return $message;

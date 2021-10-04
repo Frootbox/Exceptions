@@ -32,5 +32,5 @@ interface Exception
      * The error message is composed to be compatible
      * to be used in combination with \Frootbox\Translation\Translator
      */
-    public function toString(): string;
+    public function toString(\Frootbox\Translation\Translator $translator = null): string;
 }
